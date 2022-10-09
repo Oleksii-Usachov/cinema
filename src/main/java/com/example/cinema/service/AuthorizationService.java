@@ -15,18 +15,22 @@ import java.util.Optional;
 public class AuthorizationService {
 
     @Autowired
-    private ViewerMappers viewerMapper;
+    private ViewerMappers viewerMappers;
     @Autowired
     private ViewerRepository viewerRepository;
 
     public void registerNewViewer(ViewerDto viewerDto) {
-        viewerRepository.save(viewerMapper.dtoToEntity(viewerDto));
+        viewerRepository.save(viewerMappers.dtoToEntity(viewerDto));
     }
 
-    public Viewer getViewerData(Credentials credentials) {
-        Viewer viewer = Optional.ofNullable(viewerRepository.findViewerByLoginAndPassword(credentials.getLogin(), credentials.getPassword()))
-                .orElseThrow(() -> ResponseUtils.throwBadRequestException("Viewer/Password not found"));
-        viewer.setPassword(null);
-        return viewer;
+    public ViewerDto getViewerData(Credentials credentials) {
+        Viewer viewer = Optional.ofNullable(viewerRepository.findViewerByLoginAndPassword(credentials.getLogin(),
+                credentials.getPassword()))
+                .orElseThrow(() -> ResponseUtils.throwBadRequestException("Incorrect login/password"));
+        return viewerMappers.entityToDto(viewer);
+    }
+
+    public void deleteViewer(Long id) {
+        viewerRepository.delete(viewerRepository.findViewerById(id));
     }
 }

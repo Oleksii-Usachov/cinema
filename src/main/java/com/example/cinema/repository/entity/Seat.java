@@ -14,7 +14,8 @@ public class Seat {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String row;
-    private String number;
-    private String cinemaHallId;
+    private Integer row;
+    private Integer number;
+    private Integer cinemaHallId;
+    private Boolean isAvailable;
 }

@@ -1,13 +1,19 @@
 package com.example.cinema.repository;
 
 import com.example.cinema.repository.entity.Viewer;
+import com.example.cinema.utils.ResponseUtils;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
 
 @Repository
 public interface ViewerRepository extends CrudRepository<Viewer, Long> {
 
-    Viewer findViewerById(Long viewerId);
+    default Viewer findViewerById(Long id) {
+        return Optional.of(this.findById(id))
+                .get().orElseThrow(() -> ResponseUtils.throwBadRequestException("Viewer Id: " + id + "not found"));
+    }
 
     Viewer findViewerByLoginAndPassword(String viewerLogin, String viewerPass);
 

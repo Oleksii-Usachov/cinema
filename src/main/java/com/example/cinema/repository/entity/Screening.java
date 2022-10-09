@@ -7,8 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Data
 @Entity
@@ -18,9 +19,8 @@ public class Screening {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Long movieId;
-    @ManyToOne
-    @JoinColumn(name = "id", insertable=false, updatable=false)
-    private CinemaHall cinemaHallId;
-//    private Long cinemaHallId;
     private LocalDateTime startTime;
+    @OneToMany
+    @JoinColumn(name = "id", referencedColumnName = "id")
+    private Set<Seat> seats;
 }

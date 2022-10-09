@@ -16,18 +16,15 @@ public class MovieService {
     @Autowired
     private MovieRepository movieRepository;
 
-    public List<MovieDto> getAllMovies(){
+    public List<MovieDto> getAllMovies() {
         return movieMappers.entitiesToDto(movieRepository.findAll());
     }
-    public void saveMovie(MovieDto movieDto){
-        movieRepository.save(movieMappers.dtoToEntity(movieDto));
-    }
 
-    public MovieDto getMovie(Long id){
+    public MovieDto getMovie(Long id) {
         return movieMappers.entityToDto(movieRepository.findById(id).orElseGet(null));
     }
 
-    public List<MovieDto> getMovieByDirector(String director){
+    public List<MovieDto> getMovieByDirector(String director) {
         return movieMappers.entitiesToDto(movieRepository.findMovieByDirector(director));
     }
 }

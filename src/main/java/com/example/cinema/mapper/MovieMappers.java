@@ -41,7 +41,7 @@ public class MovieMappers {
     }
 
 
-    public List<MovieDto> entitiesToDto(Iterable <Movie> movie) {
+    public List<MovieDto> entitiesToDto(Iterable<Movie> movie) {
         if (movie == null) {
             return null;
         }
