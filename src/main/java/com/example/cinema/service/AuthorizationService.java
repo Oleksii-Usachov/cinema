@@ -19,8 +19,8 @@ public class AuthorizationService {
     @Autowired
     private ViewerRepository viewerRepository;
 
-    public void registerNewViewer(ViewerDto viewerDto) {
-        viewerRepository.save(viewerMappers.dtoToEntity(viewerDto));
+    public ViewerDto registerNewViewer(ViewerDto viewerDto) {
+        return viewerMappers.entityToDto(viewerRepository.save(viewerMappers.dtoToEntity(viewerDto)));
     }
 
     public ViewerDto getViewerData(Credentials credentials) {
