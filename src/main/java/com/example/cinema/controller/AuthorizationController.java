@@ -40,8 +40,10 @@ public class AuthorizationController {
 
     @DeleteMapping(value = "/delete-viewer/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<String> deleteViewer(@PathVariable("id") Long id) {
+    public ResponseEntity<ViewerDto> deleteViewer(@PathVariable("id") Long id) {
+        ViewerDto viewerDto = new ViewerDto();
+        viewerDto.setId(id);
         authorizationService.deleteViewer(id);
-        return ResponseEntity.ok("Viewer with id: " + id + " was deleted");
+        return ResponseEntity.ok(viewerDto);
     }
 }

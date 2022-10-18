@@ -14,6 +14,7 @@ public class ViewerMappers {
 
         Viewer viewer = new Viewer();
 
+        viewer.setId(viewerDto.getId());
         viewer.setLogin(viewerDto.getLogin());
         viewer.setPassword(viewerDto.getPassword());
         viewer.setFirstName(viewerDto.getFirstName());
@@ -29,6 +30,7 @@ public class ViewerMappers {
 
         ViewerDto viewerDto = new ViewerDto();
 
+        viewerDto.setId(viewer.getId());
         viewerDto.setLogin(viewer.getLogin());
         viewerDto.setPassword(viewer.getPassword());
         viewerDto.setFirstName(viewer.getFirstName());

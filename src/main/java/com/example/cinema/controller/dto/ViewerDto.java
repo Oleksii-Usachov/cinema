@@ -7,7 +7,6 @@ import javax.validation.constraints.NotNull;
 @Data
 public class ViewerDto {
 
-    @NotNull
     private Long id;
     @NotNull
     private String login;
