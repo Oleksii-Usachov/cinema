@@ -2,16 +2,40 @@ package com.example.cinema.mapper;
 
 import com.example.cinema.controller.dto.ViewerDto;
 import com.example.cinema.repository.entity.Viewer;
-import org.mapstruct.Mapper;
+import org.springframework.stereotype.Component;
 
-import java.util.List;
+@Component
+public class ViewerMapper {
 
-@Mapper(componentModel = "spring")
-public interface ViewerMapper {
+    public Viewer dtoToEntity(ViewerDto viewerDto) {
+        if (viewerDto == null) {
+            return null;
+        }
 
-    Viewer dtoToEntity(ViewerDto viewerDto);
+        Viewer viewer = new Viewer();
 
-    ViewerDto entityToDto(Viewer viewer);
+        viewer.setId(viewerDto.getId());
+        viewer.setLogin(viewerDto.getLogin());
+        viewer.setPassword(viewerDto.getPassword());
+        viewer.setFirstName(viewerDto.getFirstName());
+        viewer.setLastName(viewerDto.getLastName());
 
-    List<ViewerDto> entitiesToDto(Iterable<Viewer> viewer);
+        return viewer;
+    }
+
+    public ViewerDto entityToDto(Viewer viewer) {
+        if (viewer == null) {
+            return null;
+        }
+
+        ViewerDto viewerDto = new ViewerDto();
+
+        viewerDto.setId(viewer.getId());
+        viewerDto.setLogin(viewer.getLogin());
+        viewerDto.setPassword(viewer.getPassword());
+        viewerDto.setFirstName(viewer.getFirstName());
+        viewerDto.setLastName(viewer.getLastName());
+
+        return viewerDto;
+    }
 }

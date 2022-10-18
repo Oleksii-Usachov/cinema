@@ -2,7 +2,7 @@ package com.example.cinema.service;
 
 import com.example.cinema.controller.dto.Credentials;
 import com.example.cinema.controller.dto.ViewerDto;
-import com.example.cinema.mapper.ViewerMappers;
+import com.example.cinema.mapper.ViewerMapper;
 import com.example.cinema.repository.ViewerRepository;
 import com.example.cinema.repository.entity.Viewer;
 import com.example.cinema.utils.ResponseUtils;
@@ -15,7 +15,7 @@ import java.util.Optional;
 public class AuthorizationService {
 
     @Autowired
-    private ViewerMappers viewerMapper;
+    private ViewerMapper viewerMapper;
     @Autowired
     private ViewerRepository viewerRepository;
 
@@ -31,7 +31,6 @@ public class AuthorizationService {
     }
 
     public boolean deleteViewer(Long id) {
-        viewerRepository.delete(viewerRepository.findViewerById(id));
-        return viewerRepository.findById(id).isPresent();
+        return viewerRepository.deleteViewerById(id) == 1;
     }
 }
