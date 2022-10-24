@@ -6,6 +6,7 @@ public class UnitTestingConstants {
     public static final String LOGIN = "ninja";
     public static final String PASSWORD = "wu78clan";
     public static final Long ID = 1L;
+    public static final Integer LENGTH = 6;
 
     public UnitTestingConstants() {
     }
