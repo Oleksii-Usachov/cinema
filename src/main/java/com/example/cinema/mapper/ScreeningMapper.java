@@ -1,6 +1,6 @@
 package com.example.cinema.mapper;
 
-import com.example.cinema.controller.dto.ScreeningDto;
+import com.example.cinema.dto.ScreeningDto;
 import com.example.cinema.repository.entity.Screening;
 import org.mapstruct.Mapper;
 

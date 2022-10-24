@@ -1,6 +1,6 @@
 package com.example.cinema.mapper;
 
-import com.example.cinema.controller.dto.MovieDto;
+import com.example.cinema.dto.MovieDto;
 import com.example.cinema.repository.entity.Movie;
 import org.mapstruct.Mapper;
 

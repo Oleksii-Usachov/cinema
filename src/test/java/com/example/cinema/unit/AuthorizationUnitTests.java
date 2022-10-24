@@ -1,8 +1,9 @@
 package com.example.cinema.unit;
 
-import com.example.cinema.controller.dto.Credentials;
-import com.example.cinema.controller.dto.ViewerDto;
+
 import com.example.cinema.core.AbstractUnitTest;
+import com.example.cinema.dto.Credentials;
+import com.example.cinema.dto.ViewerDto;
 import com.example.cinema.exception.BadRequestException;
 import com.example.cinema.mapper.ViewerMapper;
 import com.example.cinema.repository.ViewerRepository;
@@ -27,7 +28,7 @@ import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-class AuthUnitTest extends AbstractUnitTest {
+class AuthorizationUnitTests extends AbstractUnitTest {
 
     @Autowired
     AuthorizationService authorizationService;
@@ -91,7 +92,7 @@ class AuthUnitTest extends AbstractUnitTest {
     }
 
     @Test
-    void deleteCalledThenViewerDeleted() {
+    void whenViewerIsFoundInTheRepository_thenViewerIsDeleted() {
         Long id = ID;
         mockViewer.setId(id);
 

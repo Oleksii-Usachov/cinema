@@ -1,4 +1,4 @@
-package com.example.cinema.controller.dto;
+package com.example.cinema.dto;
 
 import com.example.cinema.constants.ReservationStatus;
 import lombok.Data;

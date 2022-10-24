@@ -1,6 +1,6 @@
 package com.example.cinema.controller;
 
-import com.example.cinema.controller.dto.ReservationDto;
+import com.example.cinema.dto.ReservationDto;
 import com.example.cinema.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

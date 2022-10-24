@@ -1,6 +1,6 @@
 package com.example.cinema.controller;
 
-import com.example.cinema.controller.dto.CommonErrorResponse;
+import com.example.cinema.dto.CommonErrorResponse;
 import com.example.cinema.exception.BadRequestException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
