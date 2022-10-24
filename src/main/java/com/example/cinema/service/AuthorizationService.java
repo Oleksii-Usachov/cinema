@@ -31,6 +31,7 @@ public class AuthorizationService {
     }
 
     public boolean deleteViewer(Long id) {
-        return viewerRepository.deleteViewerById(id) == 1;
+        Viewer viewer = viewerRepository.findViewerById(id);
+        return viewerRepository.deleteViewerById(viewer.getId()) == 1;
     }
 }
