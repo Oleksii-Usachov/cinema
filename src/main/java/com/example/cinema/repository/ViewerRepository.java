@@ -16,7 +16,7 @@ public interface ViewerRepository extends CrudRepository<Viewer, Long> {
 
     default Viewer findViewerById(Long id) {
         return Optional.of(this.findById(id))
-                .get().orElseThrow(() -> ResponseUtils.throwBadRequestException("Viewer Id: " + id + "not found"));
+                .get().orElseThrow(() -> ResponseUtils.throwBadRequestException("Viewer Id: " + id + " not found"));
     }
 
     Viewer findViewerByLoginAndPassword(String viewerLogin, String viewerPass);
