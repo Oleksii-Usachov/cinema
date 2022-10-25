@@ -42,7 +42,7 @@ class AuthorizationUnitTests extends AbstractUnitTest {
     Viewer mockViewer;
 
     @BeforeEach
-    public void setup() {
+    void setup() {
         reset(viewerRepository);
 
         mockViewer = new Viewer();

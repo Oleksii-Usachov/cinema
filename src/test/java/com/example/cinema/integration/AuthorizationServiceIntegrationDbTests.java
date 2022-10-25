@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import static com.example.cinema.constants.UnitTestingConstants.ID;
 import static com.example.cinema.constants.UnitTestingConstants.LENGTH;
+import static com.example.cinema.constants.UnitTestingConstants.LOGIN;
+import static com.example.cinema.constants.UnitTestingConstants.PASSWORD;
 import static com.example.cinema.constants.UnitTestingConstants.TEST;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -28,8 +30,8 @@ class AuthorizationServiceIntegrationDbTests extends AbstractDbTest {
     @BeforeEach
     public void setUp() {
         viewerDto = new ViewerDto();
-        viewerDto.setLogin(TEST);
-        viewerDto.setPassword(TEST);
+        viewerDto.setLogin(LOGIN);
+        viewerDto.setPassword(PASSWORD);
         viewerDto.setFirstName(TEST);
         viewerDto.setLastName(TEST);
         viewerDto.setId(ID);
@@ -40,7 +42,7 @@ class AuthorizationServiceIntegrationDbTests extends AbstractDbTest {
     }
 
     @Test
-    void validLoginDataPassedThenNewViewerSaved() {
+    void givenUserIsRegistered_thenViewerIsReturned() {
         authorizationService.registerNewViewer(viewerDto);
 
         ViewerDto viewerDto = authorizationService.getViewerData(mockCredentials);
@@ -49,7 +51,7 @@ class AuthorizationServiceIntegrationDbTests extends AbstractDbTest {
     }
 
     @Test
-    void invalidLoginDataPassedThenNoViewerFound() {
+    void givenInvalidLoginDataIsProvided_thenViewerIsNotFound() {
         mockCredentials.setLogin(random(LENGTH));
         mockCredentials.setPassword(random(LENGTH));
 
@@ -58,7 +60,7 @@ class AuthorizationServiceIntegrationDbTests extends AbstractDbTest {
     }
 
     @Test
-    void registeredViewerIsFoundThenViewerIsDeleted() {
+    void givenUserIsRegistered_thenViewerIsDeleted() {
         ViewerDto viewerDto = authorizationService.getViewerData(mockCredentials);
 
         boolean isViewerDeleted = authorizationService.deleteViewer(viewerDto.getId());
