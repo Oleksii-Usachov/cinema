@@ -1,10 +1,12 @@
-package com.example.cinema.controller.dto;
+package com.example.cinema.dto;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.NotNull;
 
 @Data
+@EqualsAndHashCode
 public class ViewerDto {
 
     private Long id;

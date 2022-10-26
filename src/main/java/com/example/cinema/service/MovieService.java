@@ -1,6 +1,6 @@
 package com.example.cinema.service;
 
-import com.example.cinema.controller.dto.MovieDto;
+import com.example.cinema.dto.MovieDto;
 import com.example.cinema.mapper.MovieMapper;
 import com.example.cinema.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
 package com.example.cinema.controller;
 
-import com.example.cinema.controller.dto.Credentials;
-import com.example.cinema.controller.dto.ViewerDto;
+import com.example.cinema.dto.Credentials;
+import com.example.cinema.dto.ViewerDto;
 import com.example.cinema.service.AuthorizationService;
 import com.example.cinema.validator.ViewerValidator;
 import org.springframework.beans.factory.annotation.Autowired;

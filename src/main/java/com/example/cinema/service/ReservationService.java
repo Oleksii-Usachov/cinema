@@ -1,6 +1,6 @@
 package com.example.cinema.service;
 
-import com.example.cinema.controller.dto.ReservationDto;
+import com.example.cinema.dto.ReservationDto;
 import com.example.cinema.mapper.ReservationMapper;
 import com.example.cinema.mapper.ScreeningMapper;
 import com.example.cinema.repository.ReservationRepository;

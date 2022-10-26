@@ -1,6 +1,6 @@
 package com.example.cinema.validator;
 
-import com.example.cinema.controller.dto.ViewerDto;
+import com.example.cinema.dto.ViewerDto;
 import com.example.cinema.repository.ViewerRepository;
 import com.example.cinema.repository.entity.Viewer;
 import com.example.cinema.utils.ResponseUtils;
