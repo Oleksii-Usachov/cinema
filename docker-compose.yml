@@ -1,0 +1,51 @@
+version: "3"
+services:
+  database:
+    image: mariadb
+    container_name: cinema-mariadb
+    restart: always
+    ports:
+      - target: 3306
+        published: 3306
+    volumes:
+      - db-data:/var/lib/mariadb
+      - db-data:/var/lib/mysql
+    environment:
+      MARIADB_DATABASE: 'cinema_db'
+      MARIADB_PASSWORD: 'root'
+      MARIADB_ROOT_PASSWORD: 'root'
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - cinema-app-network
+
+  cinema:
+    build:
+      context: .
+    image: cinema
+    container_name: cinema-app
+    restart: always
+    depends_on:
+      - database
+    ports:
+      - target: 8080
+        published: 8080
+    volumes:
+      - app-data:/var/lib/cinema_app
+    environment:
+      spring.datasource.url: 'jdbc:mariadb://database:3306/cinema_db'
+      spring.datasource.username: 'root'
+      spring.datasource.password: 'root'
+      spring.datasource.driver-class-name: 'org.mariadb.jdbc.Driver'
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - cinema-app-network
+
+volumes:
+  db-data:
+  app-data:
+
+networks:
+  cinema-app-network:
+    driver: bridge
