@@ -18,7 +18,7 @@ import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static wiremock.org.apache.commons.lang3.RandomStringUtils.random;
+import static org.apache.commons.lang3.RandomStringUtils.random;
 
 class AuthorizationServiceIntegrationApiTests extends AbstractApiTest {
 
@@ -52,7 +52,7 @@ class AuthorizationServiceIntegrationApiTests extends AbstractApiTest {
 
     @Test
     void whenSendSignInRequestWithInvalidCredentials_thenViewerNotFoundErrorMessageIsReturned() throws Exception {
-        mockCredentials.setLogin(random(LENGTH));
+        mockCredentials.setLogin(random(LENGTH, true,false));
 
         mockMvc.perform(MockMvcRequestBuilders.post("/Authorization/signIn")
                 .content(OBJECT_MAPPER.writeValueAsString(mockCredentials))
