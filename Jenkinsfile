@@ -4,7 +4,7 @@ pipeline {
     stage("build & SonarQube analysis") {
       agent any
       steps {
-        withSonarQubeEnv() {
+        withSonarQubeEnv(installationName: 'Cinema SonarQubeScanner', credentialsId: 'SonarQubeToken') {
           sh 'mvn clean package sonar:sonar'
         }
       }
