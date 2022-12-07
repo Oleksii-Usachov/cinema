@@ -30,6 +30,13 @@ pipeline {
                 bat "gradle test --tests com.example.cinema.integration*Api*"
             }
         }
+        stage("SonarQube analysis") {
+              steps {
+                withSonarQubeEnv(installationName: 'sonar_server', credentialsId: 'SonarQubeToken') {
+                  sh 'mvn sonar:sonar'
+                }
+              }
+        }
         stage("Deploy") {
             steps {
                 build job: 'cinema-app-deploy', parameters: [string(name: 'DockerAppPort', value: env.dockerAppPort)]
