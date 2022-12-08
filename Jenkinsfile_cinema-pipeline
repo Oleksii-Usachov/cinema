@@ -1,0 +1,46 @@
+pipeline {
+    agent any
+    tools {
+        gradle "gradle"
+        jdk "java17"
+    }
+
+    stages {
+        stage('GIT Clone') {
+            steps {
+                echo 'Cloning..'
+                git branch: 'jenkins', url: 'https://github.com/Oleksii-Usachov/cinema/'
+            }
+        }
+        stage('Build') {
+            steps {
+                echo 'Building..'
+                bat "gradle clean build -x test"
+            }
+        }
+        stage('Test') {
+            steps {
+                echo "Unit Tests.."
+                bat "gradle test --tests com.example.cinema.unit*"
+
+                echo "DB Tests.."
+                bat "gradle test --tests com.example.cinema.integration*Db*"
+
+                echo "API Tests.."
+                bat "gradle test --tests com.example.cinema.integration*Api*"
+            }
+        }
+        stage("SonarQube analysis") {
+              steps {
+                withSonarQubeEnv(installationName: 'sonar_server', credentialsId: 'SonarQubeToken') {
+                  sh 'mvn sonar:sonar'
+                }
+              }
+        }
+        stage("Deploy") {
+            steps {
+                build job: 'cinema-app-deploy', parameters: [string(name: 'DockerAppPort', value: env.dockerAppPort)]
+            }
+        }
+    }
+}

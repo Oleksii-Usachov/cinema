@@ -1,0 +1,4 @@
+cd ../cinema
+echo %DockerAppPort%
+powershell Set-Content .env -Value "APP_PORT=%DockerAppPort%"
+docker-compose up -d

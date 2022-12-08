@@ -29,7 +29,7 @@ services:
       - database
     ports:
       - target: 8080
-        published: 8080
+        published: "$APP_PORT"
     volumes:
       - app-data:/var/lib/cinema_app
     environment:
